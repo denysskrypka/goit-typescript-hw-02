@@ -7,12 +7,7 @@ import ImageModal from "../ImageModal/ImageModal";
 import ReactModal from "react-modal";
 import ErrorMessage from "../ErrorMessage/ErrorMessage";
 import LoadMoreBtn from "../LoadMoreBtn/LoadMoreBtn";
-
-interface Photo {
-  id: string;
-  url: string;
-  title: string;
-}
+import { Photo } from "../types";
 
 export default function App() {
   const [photos, setPhotos] = useState<Photo[]>([]);
