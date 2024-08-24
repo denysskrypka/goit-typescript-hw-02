@@ -2,18 +2,15 @@ import { Field, Form, Formik, FormikHelpers } from "formik";
 import toast, { Toaster } from "react-hot-toast";
 import css from "./SearchBar.module.css";
 
-// Тип для значень форми
 interface FormValues {
   search: string;
 }
 
-// Тип для пропсів компонента SearchBar
 interface SearchBarProps {
   onSearch: (query: string) => void;
 }
 
 export default function SearchBar({ onSearch }: SearchBarProps): JSX.Element {
-  // Функція для обробки відправки форми
   const handleSubmit = (
     values: FormValues,
     actions: FormikHelpers<FormValues>

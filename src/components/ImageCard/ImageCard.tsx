@@ -1,4 +1,4 @@
-import { Photo } from "../types"; // Імпортуємо тип з загального файлу
+import { Photo } from "../types";
 import css from "./ImageCard.module.css";
 
 interface ImageCardProps {

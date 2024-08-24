@@ -1,5 +1,5 @@
 import ImageCard from "../ImageCard/ImageCard";
-import { Photo } from "../types"; // Імпортуємо тип з загального файлу
+import { Photo } from "../types";
 import css from "./ImageGallery.module.css";
 
 interface ImageGalleryProps {
