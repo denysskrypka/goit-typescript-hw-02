@@ -1,6 +1,6 @@
 import ReactModal from "react-modal";
 import css from "./ImageModal.module.css";
-import { Photo } from "../types"; // Імпорт інтерфейсу Photo
+import { Photo } from "../types";
 
 interface ImageModalProps {
   isOpen: boolean;

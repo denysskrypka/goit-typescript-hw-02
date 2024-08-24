@@ -1,16 +1,7 @@
 import ImageCard from "../ImageCard/ImageCard";
+import { Photo } from "../types"; // Імпортуємо тип з загального файлу
 import css from "./ImageGallery.module.css";
 
-// Визначаємо тип для об'єкта Photo (той самий, що використовувався в ImageCard)
-interface Photo {
-  id: string;
-  urls: {
-    small: string;
-  };
-  description: string;
-}
-
-// Визначаємо тип для пропсів компонента ImageGallery
 interface ImageGalleryProps {
   listPhoto: Photo[];
   onOpen: (photo: Photo) => void;
