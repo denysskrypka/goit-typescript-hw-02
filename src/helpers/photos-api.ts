@@ -1,12 +1,10 @@
 import axios from "axios";
 
-// Визначаємо тип для параметрів функції
 type GetPhotosParams = {
   query: string;
   currentPage: number;
 };
 
-// Визначаємо тип для результату функції
 interface Photo {
   id: string;
   urls: {
