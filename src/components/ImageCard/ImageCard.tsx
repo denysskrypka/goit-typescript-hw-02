@@ -1,6 +1,21 @@
 import css from "./ImageCard.module.css";
 
-export default function ImageCard({ photo, onOpen }) {
+interface Photo {
+  urls: {
+    small: string;
+  };
+  description: string;
+}
+
+interface ImageCardProps {
+  photo: Photo;
+  onOpen: (photo: Photo) => void;
+}
+
+export default function ImageCard({
+  photo,
+  onOpen,
+}: ImageCardProps): JSX.Element {
   return (
     <div className={css.container}>
       <img

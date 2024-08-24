@@ -1,9 +1,19 @@
 import ReactModal from "react-modal";
-
 import css from "./ImageModal.module.css";
+import { Photo } from "../types"; // Імпорт інтерфейсу Photo
 
-export default function ImageModal({ isOpen, image, onClose }) {
-  const customStyles = {
+interface ImageModalProps {
+  isOpen: boolean;
+  image: Photo;
+  onClose: () => void;
+}
+
+export default function ImageModal({
+  isOpen,
+  image,
+  onClose,
+}: ImageModalProps): JSX.Element {
+  const customStyles: ReactModal.Styles = {
     overlay: {
       backgroundColor: "rgba(0, 0, 0, 0.65)",
     },
@@ -21,7 +31,11 @@ export default function ImageModal({ isOpen, image, onClose }) {
 
   return (
     <ReactModal isOpen={isOpen} onRequestClose={onClose} style={customStyles}>
-      <img className={css.img} src={image.urls.regular} />
+      <img
+        className={css.img}
+        src={image.urls.regular}
+        alt={image.description}
+      />
     </ReactModal>
   );
 }

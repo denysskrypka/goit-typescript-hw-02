@@ -8,22 +8,29 @@ import ReactModal from "react-modal";
 import ErrorMessage from "../ErrorMessage/ErrorMessage";
 import LoadMoreBtn from "../LoadMoreBtn/LoadMoreBtn";
 
+interface Photo {
+  id: string;
+  url: string;
+  title: string;
+}
+
 export default function App() {
-  const [photos, setPhotos] = useState([]);
-  const [inputValue, setInputValue] = useState("");
-  const [loader, setLoader] = useState(false);
-  const [error, setError] = useState(false);
-  const [page, setPage] = useState(1);
-  const [image, setImage] = useState(null);
-  const [openModal, setOpenModal] = useState(false);
+  const [photos, setPhotos] = useState<Photo[]>([]);
+  const [inputValue, setInputValue] = useState<string>("");
+  const [loader, setLoader] = useState<boolean>(false);
+  const [error, setError] = useState<boolean>(false);
+  const [page, setPage] = useState<number>(1);
+  const [image, setImage] = useState<Photo | null>(null);
+  const [openModal, setOpenModal] = useState<boolean>(false);
 
   useEffect(() => {
     if (!inputValue) return;
+
     async function fetchPhotos() {
       try {
         setLoader(true);
         setError(false);
-        const data = await getPhotos(inputValue, page);
+        const data: Photo[] = await getPhotos(inputValue, page);
 
         setPhotos((prevPhotos) => [...prevPhotos, ...data]);
       } catch (error) {
@@ -36,7 +43,7 @@ export default function App() {
     fetchPhotos();
   }, [inputValue, page]);
 
-  const handleChangeInputValue = (newValue) => {
+  const handleChangeInputValue = (newValue: string) => {
     setPhotos([]);
     setPage(1);
     setInputValue(newValue);
@@ -46,7 +53,7 @@ export default function App() {
     setPage((prevPage) => prevPage + 1);
   };
 
-  const handleOpenModal = (photo) => {
+  const handleOpenModal = (photo: Photo) => {
     setImage(photo);
     setOpenModal(true);
   };
@@ -54,7 +61,9 @@ export default function App() {
   const handleCloseModal = () => {
     setOpenModal(false);
   };
+
   ReactModal.setAppElement("#root");
+
   return (
     <div>
       <SearchBar onSearch={handleChangeInputValue} />
